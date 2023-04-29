@@ -25,6 +25,18 @@ class Node {
             this.rear = newNode;
         }
     }
+     public int dequeue() {
+         if (this.front == null) {
+             return -1; // return -1 to indicate queue is empty
+         } else {
+             int dequeuedData = this.front.data;
+             this.front = this.front.next;
+             if (this.front == null) {
+                 this.rear = null;
+             }
+             return dequeuedData;
+         }
+     }
     public int peek() {
         if (this.front == null) {
             return -1; // return -1 to indicate queue is empty
@@ -43,5 +55,9 @@ public class StackOperation {
         queue.enqueue(56);
         queue.enqueue(30);
         queue.enqueue(70);
+
+        int dequeuedElement = queue.dequeue(); // returns 56
+        dequeuedElement = queue.dequeue(); // returns 30
+        dequeuedElement = queue.dequeue(); // returns 70
     }
 }
