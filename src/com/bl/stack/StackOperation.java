@@ -41,6 +41,11 @@ class Stack {
     public boolean isEmpty() {
         return (this.top == null);
     }
+    public void popAll() {
+        while (!isEmpty()) {
+            System.out.println(pop());
+        }
+    }
 }
 public class StackOperation {
     public static void main(String[] args) {
@@ -49,6 +54,10 @@ public class StackOperation {
         stack.push(70);
         stack.push(30);
         stack.push(56);
-
+        int poppedElement = stack.pop(); // returns 56
+        poppedElement = stack.pop(); // returns 30
+        poppedElement = stack.pop(); // returns 70
+        int topElement = stack.peek();
+        stack.popAll();
     }
 }
