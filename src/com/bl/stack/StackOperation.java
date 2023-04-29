@@ -1,63 +1,47 @@
 package com.bl.stack;
- class Node {
+class Node {
     public int data;
     public Node next;
-
     public Node(int data) {
         this.data = data;
         this.next = null;
     }
 }
-class Stack {
-    private Node top;
-    public Stack() {
-        this.top = null;
+ class Queue {
+    private Node front;
+    private Node rear;
+
+    public Queue() {
+        this.front = null;
+        this.rear = null;
     }
-    public void push(int data) {
+    public void enqueue(int data) {
         Node newNode = new Node(data);
-        if (this.top == null) {
-            this.top = newNode;
+        if (this.rear == null) {
+            this.front = newNode;
+            this.rear = newNode;
         } else {
-            newNode.next = this.top;
-            this.top = newNode;
-        }
-    }
-    public int pop() {
-        if (this.top == null) {
-            return -1; // return -1 to indicate stack is empty
-        } else {
-            int poppedData = this.top.data;
-            this.top = this.top.next;
-            return poppedData;
+            this.rear.next = newNode;
+            this.rear = newNode;
         }
     }
     public int peek() {
-        if (this.top == null) {
-            return -1; // return -1 to indicate stack is empty
+        if (this.front == null) {
+            return -1; // return -1 to indicate queue is empty
         } else {
-            return this.top.data;
+            return this.front.data;
         }
     }
     public boolean isEmpty() {
-        return (this.top == null);
-    }
-    public void popAll() {
-        while (!isEmpty()) {
-            System.out.println(pop());
-        }
+        return (this.front == null);
     }
 }
 public class StackOperation {
     public static void main(String[] args) {
         System.out.println("Welcome to the Stack Operation Problem");
-        Stack stack = new Stack();
-        stack.push(70);
-        stack.push(30);
-        stack.push(56);
-        int poppedElement = stack.pop(); // returns 56
-        poppedElement = stack.pop(); // returns 30
-        poppedElement = stack.pop(); // returns 70
-        int topElement = stack.peek();
-        stack.popAll();
+        Queue queue = new Queue();
+        queue.enqueue(56);
+        queue.enqueue(30);
+        queue.enqueue(70);
     }
 }
